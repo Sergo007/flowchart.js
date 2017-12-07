@@ -2,7 +2,7 @@ var Symbol = require('./flowchart.symbol');
 var inherits = require('./flowchart.helpers').inherits;
 var drawAPI = require('./flowchart.functions');
 var drawPath = drawAPI.drawPath;
-
+var eqNull = require('./isNull');
 function Condition(chart, options) {
   options = options || {};
   Symbol.call(this, chart, options);
@@ -120,12 +120,15 @@ Condition.prototype.render = function() {
         var symb;
         for (var i = 0, len = self.chart.symbols.length; i < len; i++) {
           symb = self.chart.symbols[i];
-
-          if (!self.params['align-next'] || self.params['align-next'] !== 'no') { 
-            var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);
-            if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {
-              hasSymbolUnder = true;
-              break;
+          if (!eqNull(self.params)) {
+            if (!eqNull(self.params['align-next'])) {
+              if (self.params['align-next'] !== 'no') {
+                var diff = Math.abs(symb.getCenter().x - self.right_symbol.getCenter().x);
+                if (symb.getCenter().y > self.right_symbol.getCenter().y && diff <= self.right_symbol.width/2) {
+                  hasSymbolUnder = true;
+                  break;
+                }
+              }
             }
           }
         }

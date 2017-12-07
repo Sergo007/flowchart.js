@@ -1,7 +1,7 @@
 {
   "author": "adrai",
-  "name": "flowchart.js",
-  "version": "1.7.0",
+  "name": "flowchart",
+  "version": "1.7.1",
   "main": "./index",
   "private": false,
   "engines": {
@@ -25,14 +25,14 @@
     "init": "git submodule init && git submodule update && git submodule status",
     "start": "node devserver.js",
     "lint": "eslint src",
-    "build:unminified": "NODE_ENV=production webpack -d --config webpack.config.js",
-    "build:minified": "NODE_ENV=production MINIFIED=1 webpack -d --config webpack.config.js",
-    "build": "npm run build:unminified && npm run build:minified && cp ./release/flowchart.js ./site/flowchart-latest.js",
+    "build:unminified": "SET \"NODE_ENV=production\" && webpack -d --config webpack.config.js",
+    "build:minified": "SET \"NODE_ENV=production MINIFIED=1\" && webpack -d --config webpack.config.js",
+    "build": "npm run build:unminified && npm run build:minified",
     "test": "npm run lint"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adrai/flowchart.js.git"
+    "url": "https://github.com/Sergo007/flowchart.js.git"
   },
   "keywords": [
     "flowchart",

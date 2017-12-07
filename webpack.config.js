@@ -10,6 +10,7 @@ var banner =
 	'// http://adrai.github.io/flowchart.js\n';
 
 var NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('NODE_ENV = %s', NODE_ENV);
 var defines = new webpack.DefinePlugin({
 	'process.env': {
 		'NODE_ENV': JSON.stringify(NODE_ENV)

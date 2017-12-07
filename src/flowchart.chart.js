@@ -145,7 +145,9 @@ FlowChart.prototype.render = function() {
 FlowChart.prototype.clean = function() {
   if (this.paper) {
     var paperDom = this.paper.canvas;
-    paperDom.parentNode.removeChild(paperDom);
+    if(paperDom.parentNode!=null) {
+      paperDom.parentNode.removeChild(paperDom);
+    }
   }
 };
 
